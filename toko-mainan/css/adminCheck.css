@@ -1,0 +1,71 @@
+#admin-check-wrapper {
+  padding: 1rem 2.25rem;
+}
+
+.admin-check-title {
+  font-size: 1.25rem;
+  color: #ff0f0f;
+  font-weight: bold;
+}
+
+#admin-check-wrapper #transaksi {
+  margin-top: 0.25rem;
+  border: 2px solid #ff0f0f;
+  border-radius: 8px;
+  width: 15rem;
+  padding: 0.35rem 0.75rem;
+}
+
+#admin-check-wrapper table {
+  border-radius: 8px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 2px solid #ff0f0f;
+}
+
+#admin-check-wrapper th {
+  padding: 0.25rem 1.25rem;
+  border-bottom: 2px solid #ff0f0f;
+}
+
+#admin-check-wrapper .data-row {
+  cursor: pointer;
+  text-align: center;
+  padding: 0.25rem 1.25rem;
+}
+
+.data-status {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.data-id {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+#admin-check-wrapper .data-row:hover {
+  background-color: #ff0f0f2f;
+}
+
+.empty-data {
+  padding: 1rem 0rem;
+  opacity: 0.5;
+}
+.empty-text {
+  font-size: 1.15rem;
+}
+.btn-show-empty {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #ff0000;
+}
+
+#container-admin tr {
+  text-align: center;
+}
+
+#container-admin .pengiriman-row:hover {
+  background-color: #ff0f0f2f;
+  cursor: pointer;
+}

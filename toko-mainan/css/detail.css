@@ -1,0 +1,78 @@
+#detail-body {
+  margin-top: 3.5rem;
+  display: flex;
+  padding: 0px 1.5rem;
+}
+
+.detail-product-pic img {
+  width: 400px;
+}
+.detail-product-desc {
+  padding: 0 1rem 0 5rem;
+  width: 40rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.detail-category {
+  color: #2c3e50;
+}
+.detail-product-desc h1 {
+  font-size: 2rem;
+  color: #ff0f0f;
+}
+.detail-harga-title {
+  font-size: 1rem;
+  color: #ff0f0f;
+}
+
+.delail-product-desc h2 {
+  font-size: 1.25rem;
+}
+
+.detail-product-info {
+  margin-top: 1.25rem;
+  display: flex;
+}
+
+.detail-product-info h2 {
+  color: #ff0f0f;
+  font-size: 1rem;
+}
+.detail-product-info h3 {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+.detail-product-harga {
+  font-weight: normal;
+}
+.btn-buy {
+  margin-left: 0.5rem;
+  padding: 0.25rem 2.5rem;
+  font-size: 1.25rem;
+  border: none;
+}
+.detail-product-name {
+  margin-top: 3.5rem;
+}
+
+.add-cart-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.add-cart-container h1 {
+  color: #ff0f0f;
+  font-size: 1rem;
+}
+.input-jumlah-container {
+  display: flex;
+  flex-direction: column;
+}
+.input-jumlah {
+  text-align: center;
+  font-size: 1rem;
+  border: 2px solid #ff0f0f;
+  width: 2rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+}

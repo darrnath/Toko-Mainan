@@ -1,0 +1,183 @@
+/* HEADER APP */
+header {
+  padding: 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+marquee {
+  color: #969696;
+  font-size: small;
+}
+.tokomainan-logo {
+  cursor: pointer;
+  color: #ff0f0f;
+  font-size: 2rem;
+}
+nav {
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+.nav-link {
+  cursor: pointer;
+  color: #ff0f0f;
+}
+.btn-login {
+  padding: 0.15rem 1.5rem;
+}
+.btn-register {
+  padding: 0.25rem 1.15rem;
+}
+#search-input-product {
+  width: 35rem;
+  font-size: 18px;
+  border: 2px solid #ff0f0f;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+}
+#search-input-product::placeholder {
+  color: #969696;
+}
+#btn-search {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ff0f0f;
+}
+
+/* CATEGORY OVERLAY STYLE */
+.category-wrapper,
+.login-wrapper,
+.setting-wrapper,
+.filter-wrapper {
+  position: relative;
+}
+.category-overlay,
+.login-overlay,
+.setting-overlay {
+  transform: scale(0);
+  opacity: 0;
+  transform-origin: top;
+  display: flex;
+  width: 6.65rem;
+  flex-direction: column;
+  position: absolute;
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem;
+  background-color: #ff0f0f;
+  margin-top: 0.5rem;
+  transition: all 0.15s ease-in-out;
+}
+.setting-overlay {
+  left: 1.2rem;
+  transform-origin: top left;
+}
+.category-link {
+  transition: all 0.25s ease-in-out;
+  margin-top: 0.5rem;
+  color: white;
+}
+.category-link:hover {
+  margin-left: 8px;
+}
+
+/* LOGIN OVERLAY STYLE */
+.login-overlay {
+  transform-origin: top right;
+  width: 15rem;
+  right: 2rem;
+  padding: 0.25rem 1rem;
+}
+.login-username,
+.login-password {
+  font-weight: normal;
+  color: white;
+  font-size: medium;
+}
+.login-input {
+  width: 13.5rem;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  border: 2px solid white;
+}
+.login-submit {
+  margin-right: auto;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 0.15rem 1rem;
+  color: #ff0f0f;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* USER LOGIN HEADER */
+#btn-logout {
+  margin-right: 3rem;
+}
+
+.btn-filter {
+  font-size: 20px;
+  color: #ff0f0f;
+}
+
+.fa-filter {
+  cursor: pointer;
+}
+
+.filter-overlay {
+  opacity: 0;
+  transform: scale(0);
+  width: 17rem;
+  left: -2.5rem;
+  border-radius: 8px;
+  padding: 1rem !important;
+  background-color: #ff0f0f;
+  position: absolute;
+  transform-origin: top left;
+  transition: all 0.15s ease-in-out;
+}
+.filter-overlay p {
+  color: white;
+  margin-left: 1rem;
+}
+.filter-overlay h1 {
+  color: white;
+  font-size: 1rem;
+}
+.filter-overlay a {
+  color: white;
+  transition: all 0.25s ease-in-out;
+}
+.filter-overlay a:hover {
+  margin-left: 0.5rem;
+}
+.open-category,
+.open-login,
+.open-filter,
+.open-setting {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.btn-cart .fa-shopping-cart,
+.btn-profile .fa-user,
+.btn-history .fa-print,
+.btn-setting .fa-cog {
+  cursor: pointer;
+  font-size: 20px;
+  color: #ff0f0f;
+}
+
+.setting-overlay {
+  width: 10rem;
+}
+.setting-overlay a {
+  color: white;
+  transition: all 0.25s ease-in-out;
+}
+.setting-overlay a:hover {
+  margin-left: 10px;
+}

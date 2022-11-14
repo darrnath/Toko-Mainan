@@ -1,0 +1,44 @@
+#admin-approve-main {
+  padding: 1rem 2rem;
+}
+#container-admin input {
+  margin-top: 0.25rem;
+  border: 2px solid #ff0f0f;
+  border-radius: 8px;
+  width: 15rem;
+  padding: 0.35rem 0.75rem;
+}
+
+#container-admin .admin-check-title {
+  font-size: 1.25rem;
+  color: #ff0f0f;
+  font-weight: bold;
+}
+
+.admin-approve-detail {
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
+}
+
+.admin-approve-detail h1 {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #000000e2;
+}
+
+.admin-approve-section-right,
+.admin-approve-section-left {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.admin-approve-section-tool {
+  display: flex;
+}
+
+#btn-download {
+  color: #ff0f0f;
+}

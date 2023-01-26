@@ -1,0 +1,87 @@
+.carts-title-container {
+  width: fit-content;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+}
+.carts-title-container h1 {
+  color: #ff0f0f;
+  font-size: 1.5rem;
+}
+
+.carts-title-container .fa-heart {
+  margin-right: 1rem;
+  font-size: 25px;
+  color: #ff0f0f;
+}
+#carts-homepage {
+  width: 100%;
+  overflow-x: hidden;
+}
+#carts-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1.15rem 2rem;
+}
+
+.carts-box-container {
+  padding: 0.25rem;
+  display: flex;
+  width: 50rem;
+  border-radius: 8px;
+  border: 2px solid #ff0f0f;
+}
+section#carts-section a{
+  color: #000000;
+  text-decoration: none;
+}
+
+.empty-container {
+  margin-top: 10rem;
+  display: flex;
+  opacity: 0.75;
+  flex-direction: column;
+}
+.tokomainan-logo-empty {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #ff0f0f;
+}
+
+.carts-img {
+  width: 10rem;
+}
+
+.carts-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.product-description{
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between;
+  padding: 0.75rem 0.25rem;
+}
+
+.product-info{
+  display: flex; width:fit-content"
+}
+
+.carts-content h1 {
+  font-size: 1rem;
+  color: #ff0f0f;
+}
+.carts-content h3 {
+  width: 10rem;
+  text-align: left;
+  word-break: break-all;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.carts-content .price {
+  padding-left: 0.5rem;
+}

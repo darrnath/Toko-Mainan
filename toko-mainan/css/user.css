@@ -49,6 +49,15 @@
   transition: all 0.25s ease-in-out;
   border-color: #ff0f0f;
 }
+.product-reaction{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.product-reaction i{
+  color: #ff0f0f;
+}
 .product-name {
   font-size: 1.25rem;
   color: #ff0f0f;

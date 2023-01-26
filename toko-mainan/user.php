@@ -42,64 +42,17 @@ if(isset($_GET['search']) && isset($_GET['filter'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/user.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko mainan</title>
-</head>
+<link rel="stylesheet" href="./css/user.css">
+<?php require_once ("include/head.php");?>
+<title>Home - tokomainan</title>
+
 <body>
-    <!-- HOMEPAGE HEADER -->
-    <header> 
-        <marquee>Mainan Anak - Toko Mainan - Jual Mainan - Alat Peraga Edukatif - Mainan Bayi - Mainan Kayu - Grosir Mainan - Wooden Toys</marquee>
-        <nav>
-            <h1 class="tokomainan-logo mr-2" 
-                onclick="window.location.href='./user.php'"> tokomainan </h1>
-            <div class="category-wrapper">
-                <a class="btn-category btn-secondary"> Kategori </a>
-                <div class="category-overlay">
-                    <?php foreach($categories as $categorie) : ?>
-                        <a class="category-link" 
-                            href="user.php?kat=<?= $categorie['id_kat_produk']?>"> 
-                            <?= $categorie['jenis_produk'] ?> 
-                        </a>
-                    <?php endforeach;?>
-                </div>
-            </div>
-            <form action="./user.php" method="get">
-                <input name="search" id="search-input-product" type="text" 
-                placeholder="Cari barang disini" required></input>
-                <button class="ml-2" name="btn-search" id="btn-search" type="submit">
-                    <i class="fa fa-search mr-2"></i>
-                </button>
-            </form>
-
-            <div class="filter-wrapper">
-                <a class="btn-filter">
-                    <i class="fa fa-filter"></i>
-                </a>
-                <div class="filter-overlay mt-2">
-                    <h1>Urutkan Berdasarkan : </h1>
-                    <a href=<?= filterUrlLink("asc") ?>>Berdasarkan harga terendah</a>
-                    <a href=<?= filterUrlLink("desc") ?>>Berdasarkan harga tertinggi</a>
-                </div>
-            </div>
-
-            <a href="./keranjang.php" class="ml-2 mr-2 btn-cart">
-                <i class="fa fa-shopping-cart"></i>
-            </a>
-
-            <a href="./profile.php" class="mr-2 btn-profile">
-                <i class="fa fa-user"></i>
-            </a>
-            <a class="btn-secondary" id="btn-logout" href="./include/logout.php" >Logout</a>
-        </nav>
-    </header>
+    <?php require_once ("include/userNav.php");?>
 
     <main class="mt-3" id="user-homepage">
+        <section id="ads-section">
+            <img src="./img//ads.jpg">
+        </section>
         <section class="mb-3" id="product-section">
             <h1 class="product-title mb-1">Our catalog</h1>
             <div class="product-box-container">
@@ -131,6 +84,11 @@ if(isset($_GET['search']) && isset($_GET['filter'])) {
                     <div class="product-caption">
                         <h1 class="product-name"><?= formatString($product['nama_produk']) ?></h1>
                         <p class="product-price"><?= rupiah($product['harga_produk']) ?></p>
+                    </div>
+                    <div class="product-reaction">
+                        <i class="fa fa-eye mr-1" aria-hidden="true"></i> <?= $product['viewcount'] ?>
+                        <i class="fa fa-heart mr-1 ml-2" aria-hidden="true"></i> <?= mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(*) AS num FROM likes NATURAL JOIN produk WHERE likes.id_produk=produk.id_produk AND produk.id_produk = ". $product['id_produk']), MYSQLI_ASSOC)['num'] ?>
+                        <i class="<?="fa fa-comments mr-1 ml-2"?>"></i> <?= mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(*) AS num FROM comments NATURAL JOIN produk WHERE comments.id_produk=produk.id_produk AND produk.id_produk = ". $product['id_produk']), MYSQLI_ASSOC)['num'] ?>
                     </div>
                 </div>
                 <?php endforeach; ?>

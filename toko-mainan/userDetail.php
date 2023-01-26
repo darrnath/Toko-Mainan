@@ -41,77 +41,100 @@ if( isset($_POST['btn-beli']) ){
         exit;
     }
 }
+
+//VIEWS
+$views = mysqli_fetch_array(mysqli_query($conn,"SELECT viewcount FROM produk WHERE id_produk = $id"), MYSQLI_ASSOC);
+$count = $views['viewcount'];
+$count = $count + 1;
+$updateviews = mysqli_query($conn,"UPDATE produk SET viewcount = $count WHERE id_produk = $id");
+
+//LIKES
+$totallikes = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(*) AS num FROM likes NATURAL JOIN produk WHERE likes.id_produk=produk.id_produk AND produk.id_produk = $id"), MYSQLI_ASSOC);
+$liked = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(*) AS num FROM likes NATURAL JOIN produk NATURAL JOIN user WHERE likes.id_produk=produk.id_produk AND likes.id_user=user.id_user AND produk.id_produk = $id AND user.id_user = $id_user"), MYSQLI_ASSOC);
+if($liked['num']>0){
+    $icon = 'fa fa-heart mr-1';
+}else{
+    $icon = 'fa fa-heart-o mr-1';
+}
+if(isset($_POST['btn-like']) ){
+    global $conn;
+    if($liked['num']<1){
+        if(createlike($_POST) > 0){
+            echo '
+            <script>
+            history.go(-1);
+            history.go(1);
+            </script>
+            ';
+            exit;
+        } else {
+            echo mysqli_error($conn);
+            exit;
+        }
+    }else{
+        if(deletelike($_POST) > 0){
+            echo '
+            <script>
+            history.go(-1);
+            history.go(1);
+            </script>
+            ';
+            exit;
+        } else {
+            echo mysqli_error($conn);
+            exit;
+        }
+    }
+}
+
+//COMMENTS
+$totalcomments = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(*) AS num FROM comments NATURAL JOIN produk WHERE comments.id_produk=produk.id_produk AND produk.id_produk = $id"), MYSQLI_ASSOC);
+$comments = query("SELECT * FROM comments NATURAL JOIN user WHERE id_produk = $id");
+if(isset($_POST['btn-send']) ){
+    global $conn;
+    if(createcomment($_POST) > 0){
+        echo '
+        <script>
+        history.go(-1);
+        history.go(1);
+        </script>
+        ';
+        exit;
+    } else {
+        echo mysqli_error($conn);
+        exit;
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/detail.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko mainan</title>
-</head>
+<link rel="stylesheet" href="./css/detail.css">
+<?php require_once ("include/head.php");?>
+<title>Detail - tokomainan</title>
+
 <body>
-    <!-- HOMEPAGE HEADER -->
-    <header> 
-        <marquee>Mainan Anak - Toko Mainan - Jual Mainan - Alat Peraga Edukatif - Mainan Bayi - Mainan Kayu - Grosir Mainan - Wooden Toys</marquee>
-        <nav>
-            <h1 class="tokomainan-logo mr-2" 
-                onclick="window.location.href='./user.php'"> tokomainan </h1>
-            <div class="category-wrapper">
-                <a class="btn-category btn-secondary"> Kategori </a>
-                <div class="category-overlay">
-                    <?php foreach($categories as $categorie) : ?>
-                        <a class="category-link" 
-                            href="user.php?kat=<?= $categorie['id_kat_produk']?>"> 
-                            <?= $categorie['jenis_produk'] ?> 
-                        </a>
-                    <?php endforeach;?>
-                </div>
-            </div>
-            <form action="./user.php" method="get">
-                <input name="search" id="search-input-product" type="text" 
-                placeholder="Cari barang disini" required></input>
-                <button class="ml-2" name="btn-search" id="btn-search" type="submit">
-                    <i class="fa fa-search mr-2"></i>
-                </button>
-            </form>
-
-            <div class="filter-wrapper">
-                <a class="btn-filter">
-                    <i class="fa fa-filter"></i>
-                </a>
-                <div class="filter-overlay mt-2">
-                    <h1>Urutkan Berdasarkan : </h1>
-                    <a href=<?= filterUrlLink("asc") ?>>Berdasarkan harga terendah</a>
-                    <a href=<?= filterUrlLink("desc") ?>>Berdasarkan harga tertinggi</a>
-                </div>
-            </div>
-
-            <a href="./keranjang.php" class="ml-2 mr-2 btn-cart">
-                <i class="fa fa-shopping-cart"></i>
-            </a>
-
-            <a href="./profile.php" class="mr-2 btn-profile">
-                <i class="fa fa-user"></i>
-            </a>
-            <a class="btn-secondary" id="btn-logout" href="./include/logout.php" >Logout</a>
-        </nav>
-    </header>
-
+    <?php require_once ("include/userNav.php");?>
+        
     <!-- DETAIL PRODUCT -->
     <main id="detail-body">
         <?php foreach($products as $product) :?>
         <section class="detail-product-pic mt-3">
-            <p class="mb-3 ml-3 detail-category">kategori > <?= $product['jenis_produk'] ?></p>
+            <p class="mb-3 ml-3 detail-category">Kategori > <?= $product['jenis_produk'] ?></p>
             <img src="./img/<?= $product['gambar_produk'] ?>" alt="<?= $product['gambar_produk'] ?>">
         </section>
 
         <section class="detail-product-desc">
             <h1 class="detail-product-name"><?= $product['nama_produk'] ?></h1>
+            <form class="like" action="" method="post">
+                <input type="hidden" name="id_user" value="<?=$id_user;?>">
+                <input type="hidden" name="id_produk" value="<?=$product['id_produk']?>">
+                <button name="btn-like" class="btn-like">
+                    <i class="<?= $icon ?>"></i>
+                </button>
+                <?php echo $totallikes['num'] ?>
+                <i class="<?="fa fa-comments mr-1 ml-2"?>"></i> <?php echo $totalcomments['num'] ?>
+            </form>
             <p><?php echo $product['keterangan_produk'] ?></p>
 
             <h2 class="detail-harga-title mt-2">Harga Produk </h2> 
@@ -137,6 +160,23 @@ if( isset($_POST['btn-beli']) ){
                 </div>
                 <button name="btn-beli" class="btn-buy btn-primary"> Beli </button>
             </form>
+            </br></br></br>
+            <h1>Comments</h1>
+            <?php foreach($comments as $comment) :?>
+                <div class="comment-list">
+                    <h2><?php echo $comment['nama_depan'];?> <?php echo $comment['nama_belakang'];?></h2>
+                    <h3><?php echo $comment['comment'];?></h3>
+                    <p><?php echo $comment['created_at'];?></p>
+                </div>
+            </br>
+            <?php endforeach;?>
+            <form id="comment" action="" method="post">
+                <input type="hidden" name="id_user" value="<?=$id_user;?>">
+                <input type="hidden" name="id_produk" value="<?=$product['id_produk']?>">
+                <input type="text" name="comment" class="comment" placeholder="Comment here" required>
+                <button name="btn-send" class="btn-send btn-primary">SEND</button>
+            </form>
+            </br></br></br>
         </section>
     </main>
 

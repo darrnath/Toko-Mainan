@@ -211,7 +211,7 @@ if(!$gambar_produk){
     return false;
 }
 $keterangan_produk = $data['keterangan_produk'];
-$query = "INSERT INTO produk VALUES('','$kategori','$nama_produk','$stok','$harga_produk','$berat_produk','$gambar_produk','Ready','$keterangan_produk')";
+$query = "INSERT INTO produk VALUES('','$kategori','$nama_produk','$stok','$harga_produk','$berat_produk','$gambar_produk','Ready','$keterangan_produk', 0)";
 $result = mysqli_query($conn,$query);
 return mysqli_affected_rows($conn);
 }
@@ -328,7 +328,7 @@ function formatString($string) {
     }
     return $string;
 }
-// FILTER URL
+// FILTER URL BY PRICE
 function filterUrlLink($order) {
     $url = $_SERVER['REQUEST_URI'];
 

@@ -28,6 +28,18 @@
 .delail-product-desc h2 {
   font-size: 1.25rem;
 }
+.detail-product-desc .comment-list h2 {
+  color: #ff0f0f;
+  font-size: 1.25rem;
+}
+.detail-product-desc .comment-list h3 {
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+.detail-product-desc .comment-list p {
+  font-size: 0.65rem;
+  font-weight: normal;
+}
 
 .detail-product-info {
   margin-top: 1.25rem;
@@ -75,4 +87,35 @@
   width: 2rem;
   padding: 0.5rem;
   border-radius: 8px;
+}
+
+.detail-product-desc i{
+  color: #ff0f0f;
+}
+.detail-product-desc .comment{
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  font-size: smaller;
+  background: transparent;
+  border: 1px solid #ff0f0f;
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 300px;
+  margin-right: 10px;
+}
+.detail-product-desc .btn-send {
+  margin-left: 0.5rem;
+  padding: 0.25rem 2.5rem;
+  font-size: 1.25rem;
+  border: none;
+}
+
+.detail-product-desc i#like{
+  cursor: pointer;
+}
+
+.detail-product-desc .like .btn-like{
+  cursor: pointer;
+  border: none;
+  background: transparent;
 }
